@@ -1,0 +1,74 @@
+# Swoole configuration
+upstream swoole-http {
+    server ${PHP_CONTAINER_NAME}:${PHP_CONTAINER_HTTP_PORT};
+}
+map ${DOLLAR}http_upgrade ${DOLLAR}connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+# PHP-FPM
+# server {
+#     listen 80 default;
+
+#     root /app/laravel-swoole-tutorial/public;
+#     index index.php;
+#     location / {
+#         # Redirect everything that isn't a real file to index.php
+#         try_files ${DOLLAR}uri ${DOLLAR}uri/ /index.php${DOLLAR}is_args${DOLLAR}args;
+#     }
+#     location ~ \.php${DOLLAR} {
+#         include fastcgi_params;
+#         fastcgi_param SCRIPT_FILENAME ${DOLLAR}document_root${DOLLAR}fastcgi_script_name;
+#         fastcgi_pass php-fpm:9000;
+#         try_files ${DOLLAR}uri =404;
+#     }
+#     location ~ /\.(ht|svn|git) {
+#         deny all;
+#     }
+# }
+
+# Laravel Swoole
+server {
+    listen ${NGINX_CONTAINER_HTTP_PORT} default;
+
+    root ${APP_DIR}/public;
+    index index.php;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    ## Swoole configuration
+    location = /index.php {
+        # Ensure that there is no such file named "not_exists"
+        # in your "public" directory.
+        try_files /not_exists @swoole;
+    }
+
+    location / {
+        try_files ${DOLLAR}uri ${DOLLAR}uri/ @swoole;
+    }
+
+    location @swoole {
+        set ${DOLLAR}suffix "";
+
+        if (${DOLLAR}uri = /index.php) {
+            set ${DOLLAR}suffix ?${DOLLAR}query_string;
+        }
+
+        proxy_http_version 1.1;
+        proxy_set_header Host ${DOLLAR}http_host;
+        proxy_set_header Scheme ${DOLLAR}scheme;
+        proxy_set_header SERVER_PORT ${DOLLAR}server_port;
+        proxy_set_header REMOTE_ADDR ${DOLLAR}remote_addr;
+        proxy_set_header X-Forwarded-For ${DOLLAR}proxy_add_x_forwarded_for;
+        proxy_set_header Upgrade ${DOLLAR}http_upgrade;
+        proxy_set_header Connection ${DOLLAR}connection_upgrade;
+
+        # IF https
+        # proxy_set_header HTTPS "on";
+
+        proxy_pass http://swoole-http${DOLLAR}suffix;
+    }
+}

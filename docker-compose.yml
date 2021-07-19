@@ -1,0 +1,44 @@
+version: "3.1"
+networks:
+    laravel-octane:
+services:
+    php:
+        build: 
+            context: .
+            dockerfile: ./docker/php/dockerfile.${ENV_TYPE}
+            args:
+                - ENV_TYPE=${ENV_TYPE}
+                - APP_DIR=${APP_DIR}
+                - PHP_CONTAINER_HTTP_PORT=${PHP_CONTAINER_HTTP_PORT}
+        container_name: ${PHP_CONTAINER_NAME}
+        # tty: true
+        # ports:
+        #     - "8000:8000" # not need open this port, because container is already connected to the same network
+        volumes:
+            - ./app:${APP_DIR}
+        networks:
+            - laravel-octane
+        environment: 
+            PHP_CONTAINER_NAME: ${PHP_CONTAINER_NAME}
+            
+    nginx:
+        image: nginx:alpine
+        container_name: ${NGINX_CONTAINER_NAME}
+        working_dir: ${APP_DIR}
+        volumes:
+            - ./app:${APP_DIR}
+            - ./docker/nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./docker/nginx/commands:/src/scripts
+        ports:
+            - "${NGINX_CONTAINER_HTTP_PORT}:${NGINX_CONTAINER_HTTP_PORT}" # HTTP
+        networks:
+            - laravel-octane
+        depends_on: 
+            - php
+        environment: 
+            APP_DIR: ${APP_DIR}
+            PHP_CONTAINER_NAME: ${PHP_CONTAINER_NAME}
+            PHP_CONTAINER_HTTP_PORT: ${PHP_CONTAINER_HTTP_PORT}
+            NGINX_CONTAINER_HTTP_PORT: ${NGINX_CONTAINER_HTTP_PORT}
+        command: /src/scripts/run_nginx.sh
