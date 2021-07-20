@@ -3,8 +3,7 @@ FROM phpswoole/swoole:4.6-php8.0-alpine
 ARG APP_DIR_CONTAINER
 ARG ENV_TYPE
 ARG SWOOLE_CONTAINER_HTTP_PORT
-
-ENV SWOOLE_CONTAINER_HTTP_PORT=${SWOOLE_CONTAINER_HTTP_PORT}
+ARG TMP_LOG_CONTAINER
 
 WORKDIR $APP_DIR_CONTAINER
 
@@ -24,4 +23,5 @@ RUN docker-php-ext-install pcntl pdo pdo_mysql
 # Added supervisor config
 COPY ./docker/swoole/supervisor/supervisor.conf.$ENV_TYPE /etc/supervisor/conf.d/supervisor.conf.template
 RUN envsubst < /etc/supervisor/conf.d/supervisor.conf.template > /etc/supervisor/conf.d/supervisor.conf
+RUN mkdir -p ${TMP_LOG_CONTAINER}
 CMD ["supervisord","-c","/etc/supervisor/conf.d/supervisor.conf"]

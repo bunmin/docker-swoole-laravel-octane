@@ -1,17 +1,12 @@
 [supervisord]
 nodaemon=true
 user=root
-
-# [program:php-fpm]
-# command=/usr/local/sbin/php-fpm
-# numprocs=1
-# autostart=true
-# autorestart=true
-# priority=100
+logfile=${TMP_LOG_CONTAINER}/supervisord.log
+pidfile=${TMP_LOG_CONTAINER}/supervisord.pid
 
 [program:laravel-worker]
 process_name=%(program_name)s_%(process_num)02d
-command=php /app/laravel-swoole-tutorial/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+command=php ${APP_DIR_CONTAINER}/artisan queue:work --sleep=3 --tries=3 --max-time=3600
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -19,7 +14,7 @@ killasgroup=true
 numprocs=8
 redirect_stderr=true
 stopwaitsecs=3600
-stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/worker/queue.log
+stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/worker-queue.log
 
 [program:swoole]
 command=php ${APP_DIR_CONTAINER}/artisan octane:start --host=0.0.0.0 --watch --port=${SWOOLE_CONTAINER_HTTP_PORT}
@@ -28,4 +23,4 @@ autostart=true
 autorestart=true
 numprocs=1
 process_name=%(program_name)s_%(process_num)s
-stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/swoole/http.log
+stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/swoole-http.log

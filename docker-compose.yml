@@ -33,6 +33,7 @@ services:
                 - ENV_TYPE=${ENV_TYPE}
                 - APP_DIR_CONTAINER=${APP_DIR_CONTAINER}
                 - SWOOLE_CONTAINER_HTTP_PORT=${SWOOLE_CONTAINER_HTTP_PORT}
+                - TMP_LOG_CONTAINER=${TMP_LOG_CONTAINER}
         container_name: ${SWOOLE_CONTAINER_NAME}
         restart: always
         # tty: true
