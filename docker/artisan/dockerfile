@@ -1,0 +1,8 @@
+FROM phpswoole/swoole:4.6-php8.0-alpine
+
+ARG ENV_TYPE
+
+# if production change .ini-development to php.ini-production
+RUN cp "$PHP_INI_DIR/php.ini-$ENV_TYPE" "$PHP_INI_DIR/php.ini"
+
+RUN docker-php-ext-install pdo pdo_mysql

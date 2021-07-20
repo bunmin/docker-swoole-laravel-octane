@@ -1,12 +1,12 @@
 FROM phpswoole/swoole:4.6-php8.0-alpine
 
-ARG APP_DIR
+ARG APP_DIR_CONTAINER
 ARG ENV_TYPE
-ARG PHP_CONTAINER_HTTP_PORT
+ARG SWOOLE_CONTAINER_HTTP_PORT
 
-ENV PHP_CONTAINER_HTTP_PORT=${PHP_CONTAINER_HTTP_PORT}
+ENV SWOOLE_CONTAINER_HTTP_PORT=${SWOOLE_CONTAINER_HTTP_PORT}
 
-WORKDIR $APP_DIR
+WORKDIR $APP_DIR_CONTAINER
 
 # if production change .ini-development to php.ini-production
 RUN cp "$PHP_INI_DIR/php.ini-$ENV_TYPE" "$PHP_INI_DIR/php.ini"
@@ -25,6 +25,6 @@ ENV CHOKIDAR_USEPOLLING='true'
 CMD ["npm","install","chokidar"]
 
 # Added supervisor config
-COPY ./docker/php/supervisor/supervisor.conf.$ENV_TYPE /etc/supervisor/conf.d/supervisor.conf.template
+COPY ./docker/swoole/supervisor/supervisor.conf.$ENV_TYPE /etc/supervisor/conf.d/supervisor.conf.template
 RUN envsubst < /etc/supervisor/conf.d/supervisor.conf.template > /etc/supervisor/conf.d/supervisor.conf
 CMD ["supervisord","-c","/etc/supervisor/conf.d/supervisor.conf"]

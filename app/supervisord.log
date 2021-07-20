@@ -5740,3 +5740,81 @@
 2021-07-19 09:18:39,181 INFO supervisord started with pid 1
 2021-07-19 09:18:40,189 INFO spawned: 'swoole_0' with pid 8
 2021-07-19 09:18:41,194 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-19 12:24:58,340 INFO Set uid to user 0 succeeded
+2021-07-19 12:24:58,377 INFO supervisord started with pid 1
+2021-07-19 12:24:59,383 INFO spawned: 'swoole_0' with pid 8
+2021-07-19 12:25:00,386 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-19 12:56:14,800 WARN received SIGTERM indicating exit request
+2021-07-19 12:56:14,801 INFO waiting for swoole_0 to die
+2021-07-19 12:56:14,943 INFO stopped: swoole_0 (exit status 137)
+2021-07-19 12:56:14,944 INFO reaped unknown pid 28 (terminated by SIGKILL)
+2021-07-19 12:56:14,944 INFO reaped unknown pid 30 (terminated by SIGKILL)
+2021-07-19 12:56:14,945 INFO reaped unknown pid 31 (terminated by SIGKILL)
+2021-07-19 12:56:14,945 INFO reaped unknown pid 32 (terminated by SIGKILL)
+2021-07-19 12:56:14,946 INFO reaped unknown pid 33 (terminated by SIGKILL)
+2021-07-19 12:56:14,946 INFO reaped unknown pid 34 (terminated by SIGKILL)
+2021-07-19 12:56:14,946 INFO reaped unknown pid 35 (terminated by SIGKILL)
+2021-07-19 12:56:14,947 INFO reaped unknown pid 17 (terminated by SIGKILL)
+2021-07-19 12:58:48,094 INFO Set uid to user 0 succeeded
+2021-07-19 12:58:48,102 INFO supervisord started with pid 1
+2021-07-19 12:58:49,108 INFO spawned: 'swoole_0' with pid 9
+2021-07-19 12:58:50,111 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-19 13:19:08,911 WARN received SIGTERM indicating exit request
+2021-07-19 13:19:08,919 INFO waiting for swoole_0 to die
+2021-07-19 13:19:09,051 INFO stopped: swoole_0 (exit status 137)
+2021-07-19 13:19:09,051 INFO reaped unknown pid 49 (terminated by SIGKILL)
+2021-07-19 13:19:09,052 INFO reaped unknown pid 50 (terminated by SIGKILL)
+2021-07-19 13:19:09,052 INFO reaped unknown pid 51 (terminated by SIGKILL)
+2021-07-19 13:19:09,053 INFO reaped unknown pid 52 (terminated by SIGKILL)
+2021-07-19 13:19:09,053 INFO reaped unknown pid 53 (terminated by SIGKILL)
+2021-07-19 13:19:09,054 INFO reaped unknown pid 54 (terminated by SIGKILL)
+2021-07-19 13:19:09,054 INFO reaped unknown pid 55 (terminated by SIGKILL)
+2021-07-19 13:19:09,054 INFO reaped unknown pid 56 (terminated by SIGKILL)
+2021-07-19 13:19:09,055 INFO reaped unknown pid 24 (terminated by SIGKILL)
+2021-07-19 13:22:33,314 INFO Set uid to user 0 succeeded
+2021-07-19 13:22:33,328 INFO supervisord started with pid 1
+2021-07-19 13:22:34,335 INFO spawned: 'swoole_0' with pid 9
+2021-07-19 13:22:35,338 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-19 13:36:26,616 WARN received SIGTERM indicating exit request
+2021-07-19 13:36:26,617 INFO waiting for swoole_0 to die
+2021-07-19 13:36:26,724 INFO stopped: swoole_0 (exit status 137)
+2021-07-19 13:36:26,724 INFO reaped unknown pid 24 (terminated by SIGKILL)
+2021-07-19 13:36:26,725 INFO reaped unknown pid 29 (terminated by SIGKILL)
+2021-07-19 13:36:26,726 INFO reaped unknown pid 30 (terminated by SIGKILL)
+2021-07-19 13:36:26,726 INFO reaped unknown pid 31 (terminated by SIGKILL)
+2021-07-19 13:36:26,726 INFO reaped unknown pid 32 (terminated by SIGKILL)
+2021-07-19 13:36:26,731 INFO reaped unknown pid 33 (terminated by SIGKILL)
+2021-07-19 13:36:26,732 INFO reaped unknown pid 34 (terminated by SIGKILL)
+2021-07-19 13:36:26,733 INFO reaped unknown pid 35 (terminated by SIGKILL)
+2021-07-19 13:36:26,735 INFO reaped unknown pid 36 (terminated by SIGKILL)
+2021-07-19 13:38:06,812 INFO Set uid to user 0 succeeded
+2021-07-19 13:38:06,821 INFO supervisord started with pid 1
+2021-07-19 13:38:07,829 INFO spawned: 'swoole_0' with pid 9
+2021-07-19 13:38:08,832 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-19 13:40:06,006 WARN received SIGTERM indicating exit request
+2021-07-19 13:40:06,007 INFO waiting for swoole_0 to die
+2021-07-19 13:40:06,144 INFO stopped: swoole_0 (exit status 137)
+2021-07-19 13:40:06,144 INFO reaped unknown pid 24 (terminated by SIGKILL)
+2021-07-19 13:40:06,145 INFO reaped unknown pid 29 (terminated by SIGKILL)
+2021-07-19 13:40:06,146 INFO reaped unknown pid 31 (terminated by SIGKILL)
+2021-07-19 13:40:06,146 INFO reaped unknown pid 32 (terminated by SIGKILL)
+2021-07-19 13:40:06,147 INFO reaped unknown pid 33 (terminated by SIGKILL)
+2021-07-19 13:40:06,147 INFO reaped unknown pid 34 (terminated by SIGKILL)
+2021-07-19 13:40:06,148 INFO reaped unknown pid 35 (terminated by SIGKILL)
+2021-07-19 13:40:06,149 INFO reaped unknown pid 36 (terminated by SIGKILL)
+2021-07-19 13:43:46,120 INFO Set uid to user 0 succeeded
+2021-07-19 13:43:46,133 INFO supervisord started with pid 1
+2021-07-19 13:43:47,139 INFO spawned: 'swoole_0' with pid 10
+2021-07-19 13:43:48,142 INFO success: swoole_0 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2021-07-20 07:56:16,809 WARN received SIGTERM indicating exit request
+2021-07-20 07:56:16,810 INFO waiting for swoole_0 to die
+2021-07-20 07:56:16,918 INFO stopped: swoole_0 (exit status 137)
+2021-07-20 07:56:16,919 INFO reaped unknown pid 25 (terminated by SIGKILL)
+2021-07-20 07:56:16,919 INFO reaped unknown pid 62 (terminated by SIGKILL)
+2021-07-20 07:56:16,920 INFO reaped unknown pid 63 (terminated by SIGKILL)
+2021-07-20 07:56:16,920 INFO reaped unknown pid 64 (terminated by SIGKILL)
+2021-07-20 07:56:16,921 INFO reaped unknown pid 65 (terminated by SIGKILL)
+2021-07-20 07:56:16,922 INFO reaped unknown pid 66 (terminated by SIGKILL)
+2021-07-20 07:56:16,923 INFO reaped unknown pid 67 (terminated by SIGKILL)
+2021-07-20 07:56:16,923 INFO reaped unknown pid 68 (terminated by SIGKILL)
+2021-07-20 07:56:16,924 INFO reaped unknown pid 69 (terminated by SIGKILL)

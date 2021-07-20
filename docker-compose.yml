@@ -2,31 +2,13 @@ version: "3.1"
 networks:
     laravel-octane:
 services:
-    php:
-        build: 
-            context: .
-            dockerfile: ./docker/php/dockerfile.${ENV_TYPE}
-            args:
-                - ENV_TYPE=${ENV_TYPE}
-                - APP_DIR=${APP_DIR}
-                - PHP_CONTAINER_HTTP_PORT=${PHP_CONTAINER_HTTP_PORT}
-        container_name: ${PHP_CONTAINER_NAME}
-        # tty: true
-        # ports:
-        #     - "8000:8000" # not need open this port, because container is already connected to the same network
-        volumes:
-            - ./app:${APP_DIR}
-        networks:
-            - laravel-octane
-        environment: 
-            PHP_CONTAINER_NAME: ${PHP_CONTAINER_NAME}
-            
-    nginx:
+    site:
         image: nginx:alpine
         container_name: ${NGINX_CONTAINER_NAME}
-        working_dir: ${APP_DIR}
+        working_dir: ${APP_DIR_CONTAINER}
+        restart: always
         volumes:
-            - ./app:${APP_DIR}
+            - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}
             - ./docker/nginx/conf/nginx.conf:/etc/nginx/conf/nginx.conf:ro
             - ./docker/nginx/conf.d:/etc/nginx/conf.d
             - ./docker/nginx/commands:/src/scripts
@@ -35,10 +17,87 @@ services:
         networks:
             - laravel-octane
         depends_on: 
-            - php
+            - swoole
+            - mysql
         environment: 
-            APP_DIR: ${APP_DIR}
-            PHP_CONTAINER_NAME: ${PHP_CONTAINER_NAME}
-            PHP_CONTAINER_HTTP_PORT: ${PHP_CONTAINER_HTTP_PORT}
+            APP_DIR_CONTAINER: ${APP_DIR_CONTAINER}
+            SWOOLE_CONTAINER_NAME: ${SWOOLE_CONTAINER_NAME}
+            SWOOLE_CONTAINER_HTTP_PORT: ${SWOOLE_CONTAINER_HTTP_PORT}
             NGINX_CONTAINER_HTTP_PORT: ${NGINX_CONTAINER_HTTP_PORT}
         command: /src/scripts/run_nginx.sh
+    swoole:
+        build: 
+            context: .
+            dockerfile: ./docker/swoole/dockerfile.${ENV_TYPE}
+            args:
+                - ENV_TYPE=${ENV_TYPE}
+                - APP_DIR_CONTAINER=${APP_DIR_CONTAINER}
+                - SWOOLE_CONTAINER_HTTP_PORT=${SWOOLE_CONTAINER_HTTP_PORT}
+        container_name: ${SWOOLE_CONTAINER_NAME}
+        restart: always
+        # tty: true
+        # ports:
+        #     - "8000:8000" # not need open this port, because container is already connected to the same network
+        volumes:
+            - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}
+        networks:
+            - laravel-octane
+        environment: 
+            SWOOLE_CONTAINER_NAME: ${SWOOLE_CONTAINER_NAME}
+    mysql:
+        image: mysql:8.0.25
+        container_name: mysql
+        restart: unless-stopped
+        # tty: true
+        # ports:
+        #     - 3306:3306
+        volumes:    
+            - ./mysql:/var/lib/mysql:delegated
+        environment:
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            SERVICE_TAGS: ${MYSQL_SERVICE_TAGS}
+            SERVICE_NAME: ${MYSQL_SERVICE_NAME}
+        networks:
+            - laravel-octane
+    artisan:
+        build: 
+            context: .
+            dockerfile: ./docker/artisan/dockerfile
+            args:
+                - ENV_TYPE=${ENV_TYPE}
+        container_name: artisan
+        # tty: true
+        volumes:
+            - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}
+        # depends_on:
+        #     - mysql
+        working_dir: ${APP_DIR_CONTAINER}
+        entrypoint: ['php', 'artisan']
+        networks:
+            - laravel-octane
+    composer:
+        image: composer:2
+        container_name: composer
+        volumes:
+            - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}
+        working_dir: ${APP_DIR_CONTAINER}
+        # depends_on:
+        #     - php
+        entrypoint: ['composer', '--ignore-platform-reqs']
+        networks:
+            - laravel-octane
+    npm:
+        image: node:13.7
+        container_name: npm
+        volumes:
+            - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}
+        # ports:
+        #     - 3000:3000
+        #     - 3001:3001
+        working_dir: ${APP_DIR_CONTAINER}
+        entrypoint: ['npm']
+        networks:
+            - laravel-octane

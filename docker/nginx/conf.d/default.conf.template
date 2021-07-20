@@ -1,6 +1,6 @@
 # Swoole configuration
 upstream swoole-http {
-    server ${PHP_CONTAINER_NAME}:${PHP_CONTAINER_HTTP_PORT};
+    server ${SWOOLE_CONTAINER_NAME}:${SWOOLE_CONTAINER_HTTP_PORT};
 }
 map ${DOLLAR}http_upgrade ${DOLLAR}connection_upgrade {
     default upgrade;
@@ -32,7 +32,7 @@ map ${DOLLAR}http_upgrade ${DOLLAR}connection_upgrade {
 server {
     listen ${NGINX_CONTAINER_HTTP_PORT} default;
 
-    root ${APP_DIR}/public;
+    root ${APP_DIR_CONTAINER}/public;
     index index.php;
 
     add_header X-Frame-Options "SAMEORIGIN";
