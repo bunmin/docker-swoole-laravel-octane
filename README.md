@@ -9,7 +9,7 @@ To get started, make sure you have [Docker installed](https://docs.docker.com/ge
 
 Next, navigate to this repository that you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
 
-After that spin up the containers for the web server by running `docker-compose up -d --build site`, wait until the docker done create all services needed. After services done created and without error, you can access `http://localhost` in your browser, then *tada...* your site with docker and laravel octane is running.
+After that spin up the containers for the web server by running `docker-compose up -d --build site`, wait until the docker done create all services needed. After services done created and without error, you need install laravel packages for first time using by running `docker-compose run --rm composer install`, After done you can access `http://localhost` in your browser, then *tada...* your site with docker and laravel octane is running.
 
 Three additional containers are included that handle Composer, NPM, and Artisan commands *without* having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
 
