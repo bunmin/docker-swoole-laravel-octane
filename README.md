@@ -39,7 +39,7 @@ The following images are built for our web server and additional services, with 
 - **npm** - `:node:13.7`
 
 ## Laravel
-This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Install packages & run docker](#install-package-&-run-docker) to build and run this docker image for **laravel**.
+This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Install packages & run docker](#install-package--run-docker) to build and run this docker image for **laravel**.
 
 Anyway, this repo included version of:
 - **laravel/framework** - `:8.40`
