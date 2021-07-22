@@ -11,13 +11,13 @@ Next, spin up the containers for the web server by running this step :
 #### Configure Env File
 1. Navigate to the root directory, where you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
 2. You are will need create **.env** file for laravel app. Navigate to the **app** director, where is in this repo located in `./app`, then copy `.env.example` to `.env` and you can update `.env` as you wish. But for this step please let be it same with `.env.example` because i have adjuts its with **docker env**.
-3. run command `$ docker-compose run --rm artisan key:generate`.
 
 #### Install packages & run docker
 Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), and follow step in bellow :
-1. run command `$ docker-compose run --rm composer install`, you need install laravel packages for first time.
-2. run command `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
-3. run command `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
+1. `$ docker-compose run --rm composer install`, you need install laravel packages for first time.
+2. `$ docker-compose run --rm artisan key:generate`, and generate key for laravel app.
+3. `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
+4. `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
 
 After all services done created and without error, you can access `http://localhost` in your browser, then *tada...* your site with docker and laravel octane is running.
 

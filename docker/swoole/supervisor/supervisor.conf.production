@@ -14,7 +14,7 @@ killasgroup=true
 numprocs=8
 redirect_stderr=true
 stopwaitsecs=3600
-stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/worker-queue.log
+stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/supervisor-worker-queue.log
 
 [program:swoole]
 command=php ${APP_DIR_CONTAINER}/artisan octane:start --host=0.0.0.0 --port=${SWOOLE_CONTAINER_HTTP_PORT}
@@ -23,4 +23,4 @@ autostart=true
 autorestart=true
 numprocs=1
 process_name=%(program_name)s_%(process_num)s
-stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/swoole-http.log
+stdout_logfile=${APP_DIR_CONTAINER}/storage/logs/supervisor-swoole-http.log
