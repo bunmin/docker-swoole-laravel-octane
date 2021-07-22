@@ -1,4 +1,4 @@
-# docker-compose-swoole-laravel-octane
+# Docker Compose With PHP Swoole for Laravel Octane
 This A simplified Docker Compose workflow that sets up a LEMP network of containers using swoole package for local Laravel octane development or production.
 
 This repository is cloned from [docker-compose-laravel](https://github.com/aschmelyun/docker-compose-laravel) with some modification.
