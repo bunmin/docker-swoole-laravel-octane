@@ -16,16 +16,15 @@ services:
             - "${NGINX_CONTAINER_HTTP_PORT}:${NGINX_CONTAINER_HTTP_PORT}" # HTTP
         networks:
             - laravel-octane
-        # depends_on: 
-        #     - swoole
-        #     - mysql
+        depends_on: 
+            - swoole
+            - mysql
         environment: 
             APP_DIR_CONTAINER: ${APP_DIR_CONTAINER}
             SWOOLE_CONTAINER_NAME: ${SWOOLE_CONTAINER_NAME}
             SWOOLE_CONTAINER_HTTP_PORT: ${SWOOLE_CONTAINER_HTTP_PORT}
             NGINX_CONTAINER_HTTP_PORT: ${NGINX_CONTAINER_HTTP_PORT}
         command: /src/scripts/run_nginx.sh
-        tty: true
     swoole:
         build: 
             context: .
