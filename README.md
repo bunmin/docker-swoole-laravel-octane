@@ -7,13 +7,13 @@ This repository is cloned from [docker-compose-laravel](https://github.com/aschm
 
 To get started, make sure you have [Docker installed](https://docs.docker.com/get-docker/) on your system, and then clone this repository.
 
-Next, navigate to this repository that you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
-
-After that spin up the containers for the web server by running this step :
-#### Install packages & run docker
-1. `$ docker-compose run --rm composer install`, you need install laravel packages for first time
-2. `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
-3. `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
+Next, spin up the containers for the web server by running this step :
+#### Configure, Install packages & run docker
+1. Navigate to this repository that you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
+2. You are will need create **.env** file for laravel app. Navigate to the **app** folder, where is in this repo located in `./app`, then copy `.env.example` to `.env` and you can update `.env` as you wish. But for this step please let be it same with `.env.example` becase i'm have adjuts its with **docker env**.
+3. `$ docker-compose run --rm composer install`, you need install laravel packages for first time.
+4. `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
+5. `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
 
 After all services done created and without error, you can access `http://localhost` in your browser, then *tada...* your site with docker and laravel octane is running.
 
@@ -39,7 +39,7 @@ The following images are built for our web server and additional services, with 
 - **npm** - `:node:13.7`
 
 ## Laravel
-This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Install packages & run docker](#install-packages--run-docker) to build and run this docker image for **laravel**.
+This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Configure, Install packages & run docker](#configure-install-packages--run-docker) to build and run this docker image for **laravel**.
 
 Anyway, this repo included version of:
 - **laravel/framework** - `:8.40`
