@@ -10,7 +10,7 @@ To get started, make sure you have [Docker installed](https://docs.docker.com/ge
 Next, spin up the containers for the web server by running this step :
 #### Configure, Install packages & run docker
 1. Navigate to this repository that you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
-2. You are will need create **.env** file for laravel app. Navigate to the **app** folder, where is in this repo located in `./app`, then copy `.env.example` to `.env` and you can update `.env` as you wish. But for this step please let be it same with `.env.example` becase i'm have adjuts its with **docker env**.
+2. You are will need create **.env** file for laravel app. Navigate to the **app** folder, where is in this repo located in `./app`, then copy `.env.example` to `.env` and you can update `.env` as you wish. But for this step please let be it same with `.env.example` because i have adjuts its with **docker env**.
 3. `$ docker-compose run --rm composer install`, you need install laravel packages for first time.
 4. `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
 5. `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
