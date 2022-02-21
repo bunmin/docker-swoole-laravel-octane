@@ -16,7 +16,7 @@ Next, spin up the containers for the web server by running this step :
 Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), and follow step in bellow :
 1. `$ docker-compose run --rm composer install`, you need install laravel packages for first time.
 2. `$ docker-compose run --rm artisan key:generate`, and generate key for laravel app.
-3. `$ docker-compose run --rm npm install chokidar`, this package needed for run watcher in development environments.
+3. `$ docker-compose run --rm npm install`, install node modules.
 4. `$ docker-compose up -d --build site`, this comment will build and running **site** service and other services needed in `docker-compose.yml` file.
 
 After all services done created and without error, you can access `http://localhost` in your browser, then *tada...* your site with docker and laravel octane is running.
@@ -46,5 +46,5 @@ The following images are built for our web server and additional services, with 
 This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Install packages & run docker](#install-packages--run-docker) to build and run this docker image for **laravel**.
 
 Anyway, this repo included version of:
-- **laravel/framework** - `:8.40`
-- **laravel/octane** :`1.0`
+- **laravel/framework** - `:8.83.1`
+- **laravel/octane** :`1.2`

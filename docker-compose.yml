@@ -88,6 +88,9 @@ services:
         # depends_on:
         #     - php
         entrypoint: ['composer', '--ignore-platform-reqs']
+        # entrypoint: ['/bin/bash']
+        # stdin_open: true
+        # tty: true
         networks:
             - laravel-octane
     npm:
