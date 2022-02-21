@@ -91,7 +91,7 @@ services:
         networks:
             - laravel-octane
     npm:
-        image: node:13.7
+        image: node:alpine3.15
         container_name: npm
         volumes:
             - ${APP_DIR_LOCAL}:${APP_DIR_CONTAINER}

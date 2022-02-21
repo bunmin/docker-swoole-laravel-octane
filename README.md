@@ -35,16 +35,17 @@ command : `$ docker-compose run --rm artisan [<command_name>]`, example : `$ doc
 
 ## Images
 The following images are built for our web server and additional services, with detailed:
-- **php-swoole** - `:phpswoole/swoole:4.6-php8.0-alpine`
+- **php-swoole** - `:phpswoole/swoole:4.8-php8.0-alpine`
 - **site/nginx** - `:nginx:alpine` (**lastest**)
 - **mysql** - `:mysql:8.0.25`
-- **artisan** - `:phpswoole/swoole:4.6-php8.0-alpine`
+- **artisan** - `:phpswoole/swoole:4.8-php8.0-alpine`
 - **composer** - `:composer:2`
-- **npm** - `:node:13.7`
+<!-- - **npm** - `:node:13.7` -->
+- **npm** - `:node:alpine3.15`
 
 ## Laravel
 This repository is included with **laravel** clean installation and **octane package**, if you want to change **laravel** version you can delete all files in `./app` directory, then create and install with **laravel** version as you wish and install octane package *(this is important because, this docker configuration is only for **laravel octane** where using **swoole** to run web services)*. After that you can running by following step : [Install packages & run docker](#install-packages--run-docker) to build and run this docker image for **laravel**.
 
 Anyway, this repo included version of:
-- **laravel/framework** - `:8.40`
-- **laravel/octane** :`1.0`
+- **laravel/framework** - `:9.1`
+- **laravel/octane** :`1.2`
