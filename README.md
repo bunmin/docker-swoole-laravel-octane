@@ -10,7 +10,7 @@ To get started, make sure you have [Docker installed](https://docs.docker.com/ge
 Next, spin up the containers for the web server by running this step :
 #### Configure Env File
 1. Navigate to the root directory, where you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
-2. If you want to use **mysql**, after you run step 1 in [Configure Env File](#install-packages--run-docker)  update database connection setting in`\app\.env` (env of laravel) same with `\.env` (env of docker)
+2. If you want to use **mysql**, after you run step 1 in [Configure Env File](#install-packages--run-docker), update database connection setting in`\app\.env` (env of laravel) same with `\.env` (env of docker)
 
 #### Install packages & run docker
 1. `$ docker-compose run --rm composer create-project laravel/laravel .`, download & install laravel last version.
