@@ -13,7 +13,6 @@ Next, spin up the containers for the web server by running this step :
 2. If you want to use **mysql**, after you run step 1 in [Configure Env File](#install-packages--run-docker)  update database connection setting in`\app\.env` (env of laravel) same with `\.env` (env of docker)
 
 #### Install packages & run docker
-Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), and follow step in bellow :
 1. `$ docker-compose run --rm composer create-project laravel/laravel .`, download & install laravel last version.
 2. `$ docker-compose run --rm composer require laravel/octane`, require octane package.
 3. `$ docker-compose run --rm artisan octane:install` (when show option of application server choose [1] swoole), install octane package.
