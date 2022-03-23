@@ -20,7 +20,7 @@ RUN apk update && apk upgrade && \
 
 RUN docker-php-ext-install pcntl
 
-# ENV CHOKIDAR_USEPOLLING='true'
+ENV CHOKIDAR_USEPOLLING='true'
 # CMD ["npm","install","chokidar"]
 
 # Added supervisor config
