@@ -8,11 +8,16 @@ This repository is cloned from [docker-compose-laravel](https://github.com/aschm
 To get started, make sure you have [Docker installed](https://docs.docker.com/get-docker/) on your system, and then clone this repository.
 
 Next, spin up the containers for the web server by running this step :
-#### Configure Env File
+### Configure Env File
 1. Navigate to the root directory, where you have cloned before, then copy `.env.example` to `.env` and you can update `.env` as you wish.
 2. If you want to use **mysql**, after you run step 1 in [Configure Env File](#install-packages--run-docker)  update database connection setting in`\app\.env` (env of laravel) same with `\.env` (env of docker)
 
-#### Install packages & run docker
+### Install packages & run docker
+#### Install all with one command
+This method is usually used by linux users, if you are a windows user I recommend using  [CMDER](https://cmder.net/).
+Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), then for linux users, run command :`$ ./create.sh`, if you are a windows user and have already installed [CMDER](https://cmder.net/), run command : `λ sh create.sh` in root diretory of application
+
+#### Install using docker-compose command
 Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), and follow step in bellow :
 1. `$ docker-compose run --rm composer create-project laravel/laravel .`, download & install laravel last version.
 2. `$ docker-compose run --rm composer require laravel/octane`, require octane package.
