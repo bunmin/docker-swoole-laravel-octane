@@ -15,9 +15,12 @@ Next, spin up the containers for the web server by running this step :
 ### Install packages & run docker
 #### Install all with one command
 This method is usually used by linux users, if you are a windows user I recommend using  [CMDER](https://cmder.net/).
+
 Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), then for linux users, run command :`$ ./create.sh`, if you are a windows user and have already installed [CMDER](https://cmder.net/), run command : `λ sh create.sh` in root diretory of application
 
 #### Install using docker-compose command
+Another way, u can install & run docker services with step by step.
+
 Back to root directory if you have running step 2 in [Configure Env File](#configure-env-file), and follow step in bellow :
 1. `$ docker-compose run --rm composer create-project laravel/laravel .`, download & install laravel last version.
 2. `$ docker-compose run --rm composer require laravel/octane`, require octane package.
