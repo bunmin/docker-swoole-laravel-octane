@@ -20,8 +20,7 @@ RUN apk update && apk upgrade && \
 
 RUN docker-php-ext-install pcntl
 
-# ENV CHOKIDAR_USEPOLLING='true'
-# CMD ["npm","install","chokidar"]
+ENV CHOKIDAR_USEPOLLING='true'
 
 # Added supervisor config
 COPY ./docker/swoole/supervisor/supervisor.conf.$ENV_TYPE /etc/supervisor/conf.d/supervisor.conf.template
